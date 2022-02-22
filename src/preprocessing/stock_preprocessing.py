@@ -66,3 +66,4 @@ def process_log_returns(data: pd.DataFrame, close_col, print_volatiltiy=True):
         print("Monthly volatility: ", f"{monthly_volatility:.2f}%")
         print("Annual volatility: ", f"{annual_volatility:.2f}%")
     return data
+
