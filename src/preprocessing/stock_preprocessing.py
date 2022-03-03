@@ -4,6 +4,8 @@ import math
 
 PATH = os.path.realpath(__file__)
 
+__all__ = ["process_ma_ratio", "process_ratio", "process_date", "process_log_returns"]
+
 
 def ma_ratio(data, column, window):
     v = data[column].rolling(window).mean()
@@ -11,7 +13,7 @@ def ma_ratio(data, column, window):
     return data
 
 
-def preprocess_ma_ratio(data: pd.DataFrame, windows=[5, 10, 20, 60, 120], columns=["close", "volume"], drop_na=True):
+def process_ma_ratio(data: pd.DataFrame, windows=[5, 10, 20, 60, 120], columns=["close", "volume"], drop_na=True):
     new_cols = []
     for col in columns:
         assert col in list(data), f"{col} not in {list(data)}"
@@ -66,4 +68,3 @@ def process_log_returns(data: pd.DataFrame, close_col, print_volatiltiy=True):
         print("Monthly volatility: ", f"{monthly_volatility:.2f}%")
         print("Annual volatility: ", f"{annual_volatility:.2f}%")
     return data
-
