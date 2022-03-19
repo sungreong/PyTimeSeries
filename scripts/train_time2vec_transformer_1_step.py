@@ -40,7 +40,7 @@ class args:
     nhead = 8
     n_epoch = 10000
     n_log_interval = 50
-    save_folder_name = "time2vec_transformer"
+    save_folder_name = "m_time2vec_transformer"
     stock_start_date = "2015-01-01"
     scheduler_step_size = 5
     scheduler_gamma = 0.9
