@@ -1,6 +1,32 @@
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
+
+
+def candle_stick_plotly(df):
+    assert type(df.index) == pd.DatetimeIndex
+    check_cols = ["Open", "High", "Low", "Close"]
+    assert len(set(check_cols) & set(list(df))) == 4, f"check df column : {list(df)} / required columns : {check_cols}"
+    date_min = df.index.min().strftime("%Y/%m/%d")
+    date_max = df.index.max().strftime("%Y/%m/%d")
+
+    fig = go.Figure(
+        data=[go.Candlestick(x=df.index, open=df["Open"], high=df["High"], low=df["Low"], close=df["Close"])]
+    )
+    fig.update_layout(
+        title=f"({date_min} ~ {date_max})",
+        xaxis_title="Date",
+        yaxis_title="",
+        font_family="Courier New",
+        font_color="black",
+        title_font_family="Times New Roman",
+        title_font_color="red",
+        title_font_size=15,
+        legend_title_font_color="green",
+        xaxis_rangeslider_visible=False,
+    )
+    fig.show()
 
 
 def candle_stick_example(df):

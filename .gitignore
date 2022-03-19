@@ -132,3 +132,6 @@ dmypy.json
 # custom
 
 .pkl
+.png
+graph
+graph2
